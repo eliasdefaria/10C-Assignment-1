@@ -178,3 +178,7 @@ vector<Card> Hand::get_cards() const{
 int Player::get_money() const{
   return money;
 }
+
+void Player::change_money(int n){
+  money += n;
+}
