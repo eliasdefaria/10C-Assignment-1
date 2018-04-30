@@ -23,7 +23,7 @@ int main(){
    Player a;
    cout << a.get_money() << endl;
 
-   Hand firstHand;
+   Hand playerHand, dealerHanf;
    cout << firstHand.get_value() << endl;
    firstHand.hit();
    cout << firstHand.get_value() << endl;
