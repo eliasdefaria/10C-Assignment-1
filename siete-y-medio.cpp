@@ -20,10 +20,18 @@ using namespace std;
 int main(){
    /* --STATEMENTS-- */
    srand((int)time(0));
-   Player a;
-   cout << a.get_money() << endl;
 
-   Hand playerHand, dealerHanf;
+   Player player;
+   while(player.get_money() > 0){
+     int bet;
+     cout << "How much would you like to bet? ";
+     cin >> bet;
+   }
+
+
+   Hand playerHand, dealerHand; //Initializes new hands for player and dealer.
+
+
    cout << firstHand.get_value() << endl;
    firstHand.hit();
    cout << firstHand.get_value() << endl;
