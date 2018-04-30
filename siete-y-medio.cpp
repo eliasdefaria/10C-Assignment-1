@@ -19,5 +19,7 @@ using namespace std;
 // Stub for main
 int main(){
    /* --STATEMENTS-- */
+   Player a;
+   cout << a.get_money() << endl;
    return 0;
 }
