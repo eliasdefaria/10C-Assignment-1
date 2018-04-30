@@ -23,9 +23,9 @@ int main(){
 
    Player player;
    //while(player.get_money() > 0){ //Ends game when player runs out of money
-     bool playerWin, dealerWin;
+     bool playerWin, dealerWin, invalidBet = true, validHit = true;
      int bet;
-     bool invalidBet = true;
+     string playerResponse;
 
      while(invalidBet){
        cout << "How much would you like to bet? ";
@@ -38,8 +38,28 @@ int main(){
      }
 
      Hand playerHand, dealerHand; //Initializes new hands for player and dealer
-     cout << "Your cards: \n\t" << playerHand.get_card(1).get_spanish_rank() << " of " << playerHand.get_card(1).get_spanish_suit();
+     while(validHit){
+       cout << "Your cards: \n";
+       for(int i = 0; i < playerHand.get_cards().size(); i++){
+         cout << "\t" << playerHand.get_cards()[i].get_spanish_rank() << " of " << playerHand.get_cards()[i].get_spanish_suit() << endl;
+       }
 
+       if (playerHand.get_bust()){
+         cout << "You busted!" << endl;
+         validHit = false;
+       }
+       else{
+         cout << "Your total is " << playerHand.get_value() << ". Do you want another card? (y/n)";
+         cin >> playerResponse;
+
+         if((playerResponse == "y" || playerResponse == "Y" || playerResponse == "yes" || playerResponse == "Yes") && playerHand.get_value() <= 7.5){
+           playerHand.hit();
+         }
+         else{
+           validHit = false;
+         }
+       }
+     }
      /*
      if (playerHand.get_bust() || dealerHand().get_bust()){
        if((playerHand.get_bust() && !dealerHand.get_bust()) || (playerHand.get_bust() && dealerHand.get_bust()){

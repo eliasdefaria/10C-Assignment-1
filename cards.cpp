@@ -166,8 +166,8 @@ double Hand::get_value() const{
   return value;
 }
 
-Card Hand::get_card(int n) const{
-  return cards[n-1];
+vector<Card> Hand::get_cards() const{
+  return cards;
 }
 
 /* *************************************************

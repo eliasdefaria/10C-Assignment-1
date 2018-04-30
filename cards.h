@@ -73,7 +73,7 @@ class Hand {
       void hit();
       bool get_bust() const;
       double get_value() const;
-      Card get_card(int n) const;
+      vector<Card> get_cards() const;
 
    private:
       vector<Card> cards;
