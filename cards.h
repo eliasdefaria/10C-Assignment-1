@@ -47,7 +47,7 @@ class Card {
       // Converts card rank to number.
       // The possible returns are: 1, 2, 3, 4, 5, 6, 7, 10, 11 and 12
       int get_rank() const;
-      //Card draw_card() const;
+      double get_value() const;
 
       // Compare rank of two cards. E.g: Eight<Jack is true.
       // Assume Ace is always 1.
@@ -63,14 +63,24 @@ private:
 class Hand {
    public:
       // A vector of Cards
-      //Hand() : cards(),
+      //Default Constructor
+      Hand() : bust(false){
+        Card a, b;
+        cards.push_back(a);
+        cards.push_back(b);
+        value = a.get_value() + b.get_value();
+      }
 
-      // You decide what functions you'll need...
+      void hit();
+      bool get_bust();
+
+      double get_value() const;
 
    private:
-      // You decide what fields you'll need...
-      /*vector<Card> cards;
-      Player current_player;*/
+      vector<Card> cards;
+      double value;
+      bool bust;
+
 };
 
 

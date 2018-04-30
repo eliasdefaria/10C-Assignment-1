@@ -19,7 +19,16 @@ using namespace std;
 // Stub for main
 int main(){
    /* --STATEMENTS-- */
+   srand((int)time(0));
    Player a;
    cout << a.get_money() << endl;
+
+   Hand firstHand;
+   cout << firstHand.get_value() << endl;
+   firstHand.hit();
+   cout << firstHand.get_value() << endl;
+   if(firstHand.get_bust()){
+     cout << "Game over!" << endl;
+   }
    return 0;
 }

@@ -127,6 +127,15 @@ int Card::get_rank() const {
    return static_cast<int>(rank) + 1 ;
 }
 
+double Card::get_value() const {
+  if (get_rank() > 7){
+    return 0.5;
+  }
+  else{
+    return get_rank();
+  }
+}
+
 // Comparison operator for cards
 // Returns TRUE if card1 < card2
 bool Card::operator < (Card card2) const {
@@ -139,8 +148,22 @@ bool Card::operator < (Card card2) const {
    Hand class
    ************************************************* */
 // Implemente the member functions of the Hand class here.
+void Hand::hit() {
+  Card new_card;
+  cards.push_back(new_card);
+  value += new_card.get_value();
+  if (value > 7.5){
+    bust = true;
+  }
+}
 
+bool Hand::get_bust(){
+  return bust;
+}
 
+double Hand::get_value() const{
+  return value;
+}
 
 /* *************************************************
    Player class
