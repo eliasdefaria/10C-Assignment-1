@@ -22,13 +22,14 @@ int main(){
    srand((int)time(0));
 
    Player player;
-   //while(player.get_money() > 0){ //Ends game when player runs out of money
-     bool playerWin, invalidBet = true, validHit = true, dealerHit = true;
+   Player dealer(900);
+   while(player.get_money() > 0 && dealer.get_money() > 0){ //Ends game when player runs out of money
+     bool playerWin, invalidBet = true, validHit = true, dealerHit = true, tie = false;
      int bet;
      string playerResponse;
 
      while(invalidBet){
-       cout << "How much would you like to bet? ";
+       cout << "You have " << player.get_money() << ". Enter your bet: ";
        cin >> bet;
 
        if(bet <= player.get_money()){
@@ -81,14 +82,14 @@ int main(){
            dealerHand.hit();
          }
          else{
-           validHit = false;
+           dealerHit = false;
          }
        }
      }
 
      //Comparisons to decide winner of game
-     if (playerHand.get_bust() || dealerHand().get_bust()){
-       if((playerHand.get_bust() && !dealerHand.get_bust()) || (playerHand.get_bust() && dealerHand.get_bust()){
+     if (playerHand.get_bust() || dealerHand.get_bust()){
+       if((playerHand.get_bust() && !dealerHand.get_bust()) || (playerHand.get_bust() && dealerHand.get_bust())){
          playerWin = false;
        }
        else if(!playerHand.get_bust() && dealerHand.get_bust()){
@@ -100,11 +101,29 @@ int main(){
       if(playerHand.get_value() > dealerHand.get_value()){
         playerWin = true;
       }
-      else{
+      else if(playerHand.get_value() < dealerHand.get_value()){
         playerWin = false;
+      }
+      else{
+        tie = true;
       }
     }
 
+    //Display winner change bet value accordingly
+    if(playerWin && !tie){
+      cout << "You won! Great job!" << endl;
+      player.change_money(bet);
+      dealer.change_money((-1*bet));
+    }
+    else if (!playerWin && !tie){
+      cout << "Dealer wins!" << endl;
+      dealer.change_money(bet);
+      player.change_money((-1*bet));
+    }
+    else{
+      cout << "It's a tie!" << endl;
+    }
+  }
 
 
 
