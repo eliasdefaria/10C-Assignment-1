@@ -42,17 +42,17 @@ int main(){
 
      //Player card drawing
      while(validHit){
-       cout << "Your cards: \n";
+       cout << "\nYour cards: \n";
        for(int i = 0; i < playerHand.get_cards().size(); i++){
          cout << "\t" << playerHand.get_cards()[i].get_spanish_rank() << " of " << playerHand.get_cards()[i].get_spanish_suit() << endl;
        }
 
        if (playerHand.get_bust()){
-         cout << "You busted!" << endl;
+         cout << "\nYou busted!\n" << endl;
          validHit = false;
        }
        else{
-         cout << "Your total is " << playerHand.get_value() << ". Do you want another card? (y/n)";
+         cout << "\nYour total is " << playerHand.get_value() << ". Do you want another card? (y/n)";
          cin >> playerResponse;
 
          if((playerResponse == "y" || playerResponse == "Y" || playerResponse == "yes" || playerResponse == "Yes") && playerHand.get_value() <= 7.5){
@@ -66,19 +66,19 @@ int main(){
 
      //Dealer card drawing
      while(dealerHit){
-       cout << "Dealer's cards: \n";
+       cout << "\nDealer's cards: \n";
        for(int i = 0; i < dealerHand.get_cards().size(); i++){
          cout << "\t" << dealerHand.get_cards()[i].get_spanish_rank() << " of " << dealerHand.get_cards()[i].get_spanish_suit() << endl;
        }
 
        if (dealerHand.get_bust()){
-         cout << "Dealer busted!" << endl;
+         cout << "\nDealer busted!\n" << endl;
          dealerHit = false;
        }
        else{
-         cout << "Dealer's total is " << dealerHand.get_value() << ".";
+         cout << "\nDealer's total is " << dealerHand.get_value() << "." << endl;
          if(dealerHand.get_value() <= 5.5){
-           cout << "Dealer hits!" << endl;
+           cout << "Dealer hits!\n" << endl;
            dealerHand.hit();
          }
          else{
@@ -111,22 +111,27 @@ int main(){
 
     //Display winner change bet value accordingly
     if(playerWin && !tie){
-      cout << "You won! Great job!" << endl;
+      cout << "You won! Great job!\n" << endl;
       player.change_money(bet);
       dealer.change_money((-1*bet));
     }
     else if (!playerWin && !tie){
-      cout << "Dealer wins!" << endl;
+      cout << "Dealer wins!\n" << endl;
       dealer.change_money(bet);
       player.change_money((-1*bet));
     }
     else{
-      cout << "It's a tie!" << endl;
+      cout << "It's a tie!\n" << endl;
     }
   }
 
+  if(player.get_money() > 0){
+    cout << "You took all the dealers cash! Way to go, you beat the casino! \n\n Goodbye now! \n";
+  }
 
-
+  else{
+  cout << "The casino took all your money! Come back with more cash to play again! \n\n Goodbye! \n";
+  }
 /*
    cout << firstHand.get_value() << endl;
    firstHand.hit();
