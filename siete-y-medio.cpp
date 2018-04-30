@@ -22,21 +22,32 @@ int main(){
    srand((int)time(0));
 
    Player player;
-   while(player.get_money() > 0){
+   while(player.get_money() > 0){ //Ends game when player runs out of money
      int bet;
-     cout << "How much would you like to bet? ";
-     cin >> bet;
+     bool invalidBet = true;
+
+     while(invalidBet){
+       cout << "How much would you like to bet? ";
+       cin >> bet;
+
+       if(bet <= player.get_money()){
+         invalidBet = false;
+       }
+
+     }
+
+     Hand playerHand, dealerHand; //Initializes new hands for player and dealer.
    }
 
 
-   Hand playerHand, dealerHand; //Initializes new hands for player and dealer.
 
 
+/*
    cout << firstHand.get_value() << endl;
    firstHand.hit();
    cout << firstHand.get_value() << endl;
    if(firstHand.get_bust()){
      cout << "Game over!" << endl;
-   }
+   }*/
    return 0;
 }
