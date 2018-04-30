@@ -23,7 +23,7 @@ int main(){
 
    Player player;
    //while(player.get_money() > 0){ //Ends game when player runs out of money
-     bool playerWin, dealerWin, invalidBet = true, validHit = true, dealerHit = true;
+     bool playerWin, invalidBet = true, validHit = true, dealerHit = true;
      int bet;
      string playerResponse;
 
@@ -85,21 +85,25 @@ int main(){
          }
        }
      }
-     /*
+
+     //Comparisons to decide winner of game
      if (playerHand.get_bust() || dealerHand().get_bust()){
        if((playerHand.get_bust() && !dealerHand.get_bust()) || (playerHand.get_bust() && dealerHand.get_bust()){
          playerWin = false;
-         dealerWin = true;
        }
        else if(!playerHand.get_bust() && dealerHand.get_bust()){
          playerWin = true;
-         dealerWin = false;
        }
-       else{
 
-       }
      }
-   }*/
+    else{
+      if(playerHand.get_value() > dealerHand.get_value()){
+        playerWin = true;
+      }
+      else{
+        playerWin = false;
+      }
+    }
 
 
 
