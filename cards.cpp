@@ -107,9 +107,10 @@ string Card::get_spanish_rank() const {
 
 
 
-// Accessor: returns a string with the suit of the card in English
+/*// Accessor: returns a string with the suit of the card in English
 // This is just a stub! Modify it to your liking.
 string Card::get_english_suit() const {
+
    return "";
 }
 
@@ -117,7 +118,7 @@ string Card::get_english_suit() const {
 // This is just a stub! Modify it to your liking.
 string Card::get_english_rank() const {
    return "";
-}
+}*/
 
 
 
@@ -157,12 +158,16 @@ void Hand::hit() {
   }
 }
 
-bool Hand::get_bust(){
+bool Hand::get_bust() const{
   return bust;
 }
 
 double Hand::get_value() const{
   return value;
+}
+
+Card Hand::get_card(int n) const{
+  return cards[n-1];
 }
 
 /* *************************************************

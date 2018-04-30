@@ -65,16 +65,15 @@ class Hand {
       // A vector of Cards
       //Default Constructor
       Hand() : bust(false){
-        Card a, b;
+        Card a;
         cards.push_back(a);
-        cards.push_back(b);
-        value = a.get_value() + b.get_value();
+        value = a.get_value();
       }
 
       void hit();
-      bool get_bust();
-
+      bool get_bust() const;
       double get_value() const;
+      Card get_card(int n) const;
 
    private:
       vector<Card> cards;

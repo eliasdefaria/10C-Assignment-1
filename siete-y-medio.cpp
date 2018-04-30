@@ -22,7 +22,8 @@ int main(){
    srand((int)time(0));
 
    Player player;
-   while(player.get_money() > 0){ //Ends game when player runs out of money
+   //while(player.get_money() > 0){ //Ends game when player runs out of money
+     bool playerWin, dealerWin;
      int bet;
      bool invalidBet = true;
 
@@ -36,8 +37,24 @@ int main(){
 
      }
 
-     Hand playerHand, dealerHand; //Initializes new hands for player and dealer.
-   }
+     Hand playerHand, dealerHand; //Initializes new hands for player and dealer
+     cout << "Your cards: \n\t" << playerHand.get_card(1).get_spanish_rank() << " of " << playerHand.get_card(1).get_spanish_suit();
+
+     /*
+     if (playerHand.get_bust() || dealerHand().get_bust()){
+       if((playerHand.get_bust() && !dealerHand.get_bust()) || (playerHand.get_bust() && dealerHand.get_bust()){
+         playerWin = false;
+         dealerWin = true;
+       }
+       else if(!playerHand.get_bust() && dealerHand.get_bust()){
+         playerWin = true;
+         dealerWin = false;
+       }
+       else{
+
+       }
+     }
+   }*/
 
 
 
