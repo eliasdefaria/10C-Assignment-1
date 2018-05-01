@@ -5,29 +5,26 @@
 #include <ctime>
 #include <cstdlib>
 #include "cards.h"
+
 using namespace std;
 
-// Global constants (if any)
-
-
-// Non member functions declarations (if any)
-
-
-// Non member functions implementations (if any)
-
-
-// Stub for main
 int main(){
    /* --STATEMENTS-- */
    srand((int)time(0));
 
    Player player;
    Player dealer(900);
+   int gamecount = 1;
+
+   //Initialize text log file
+   ofstream fout;
+   fout.open("gamelog.txt");
+
    while(player.get_money() > 0 && dealer.get_money() > 0){ //Ends game when player runs out of money
      bool playerWin, invalidBet = true, validHit = true, dealerHit = true, tie = false;
      int bet;
      string playerResponse;
-
+     fout << gamecount;
      while(invalidBet){
        cout << "You have " << player.get_money() << ". Enter your bet: ";
        cin >> bet;
@@ -130,14 +127,8 @@ int main(){
   }
 
   else{
-  cout << "The casino took all your money! Come back with more cash to play again! \n\n Goodbye! \n";
+    cout << "The casino took all your money! Come back with more cash to play again! \n\n Goodbye! \n";
   }
-/*
-   cout << firstHand.get_value() << endl;
-   firstHand.hit();
-   cout << firstHand.get_value() << endl;
-   if(firstHand.get_bust()){
-     cout << "Game over!" << endl;
-   }*/
-   return 0;
+  fout.close();
+  return 0;
 }
