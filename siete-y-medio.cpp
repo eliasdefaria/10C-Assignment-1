@@ -36,7 +36,7 @@ int main(){
 
      }
 
-     fout << "Bet: " << bet;
+     fout << "Bet: " << bet << endl << endl;
 
      Hand playerHand, dealerHand; //Initializes new hands for player and dealer
 
@@ -123,8 +123,26 @@ int main(){
     else{
       cout << "It's a tie!\n" << endl;
     }
+
+
+    /**********************************
+          OUTPUT FOR GAMELOG.TXT
+    ***********************************/
+    fout << "\nYour cards: \n";
+    for(int i = 0; i < playerHand.get_cards().size(); i++){
+      fout << "\t" << playerHand.get_cards()[i].get_spanish_rank() << " of " << playerHand.get_cards()[i].get_spanish_suit() << endl;
+    }
+    fout << "\nYour total is " << playerHand.get_value() << endl << endl;
+    fout << "\nDealer's cards: \n";
+    for(int i = 0; i < dealerHand.get_cards().size(); i++){
+      fout << "\t" << dealerHand.get_cards()[i].get_spanish_rank() << " of " << dealerHand.get_cards()[i].get_spanish_suit() << endl;
+    }
+    fout << "\nDealer's total is " << dealerHand.get_value() << "." << endl;
+    //Incremements game count to keep track of how many games have been played
+    gamecount++;
   }
 
+  //Output when player or dealer loses
   if(player.get_money() > 0){
     cout << "You took all the dealers cash! Way to go, you beat the casino! \n\n Goodbye now! \n";
   }
