@@ -21,7 +21,7 @@ int main(){
    fout.open("gamelog.txt");
 
    while(player.get_money() > 0 && dealer.get_money() > 0){ //Ends game when player runs out of money
-     fout << "------------------------------------------------------------------------\n\n"
+     fout << "------------------------------------------------------------------------\n\n";
      bool playerWin, invalidBet = true, validHit = true, dealerHit = true, tie = false;
      int bet;
      string playerResponse;
