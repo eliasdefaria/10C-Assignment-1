@@ -21,11 +21,11 @@ int main(){
    fout.open("gamelog.txt");
 
    while(player.get_money() > 0 && dealer.get_money() > 0){ //Ends game when player runs out of money
-     fout << "------------------------------------------------------------------------\n\n";
+     fout << "----------------------------------------------\n\n";
      bool playerWin, invalidBet = true, validHit = true, dealerHit = true, tie = false;
      int bet;
      string playerResponse;
-     fout << "Game Number: " << gamecount << "\t\t" << player.get_money() << endl;
+     fout << "Game Number: " << gamecount << "\t\t\t\t\tMoney Left: " << player.get_money() << endl;
      while(invalidBet){
        cout << "You have " << player.get_money() << ". Enter your bet: ";
        cin >> bet;
@@ -36,7 +36,7 @@ int main(){
 
      }
 
-     fout << "Bet: " << bet << endl << endl;
+     fout << "Bet: " << bet << endl;
 
      Hand playerHand, dealerHand; //Initializes new hands for player and dealer
 
