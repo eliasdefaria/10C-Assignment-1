@@ -1,4 +1,4 @@
-# 10C-Assignment-1
+# Siete Y Medio Console Game
 This program will allow users to play the card game known as "siete y medio". 
 
 The program uses C++ and requires a compiler that compiles c++-11. 
